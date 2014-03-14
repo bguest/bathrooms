@@ -19,19 +19,25 @@
 #
 
 class Bathroom < ActiveRecord::Base
+  after_initialize :init
 
   attr_accessor :needs_update
 
   serialize :occupied_color, ColorSerializer
   serialize :open_color, ColorSerializer
 
-  def occupied_color
-    super || Color::RGB::Red
+  def init
+    self.occupied_color ||= Color::RGB::Red
+    self.open_color ||= Color::RGB::Green
   end
 
-  def open_color
-    super || Color::RGB::Green
-  end
+  #def occupied_color
+    #super || Color::RGB::Red
+  #end
+
+  #def open_color
+    #super || Color::RGB::Green
+  #end
 
   def pixels
     color = occupied ? occupied_color : open_color
