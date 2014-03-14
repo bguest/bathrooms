@@ -36,7 +36,7 @@ module BathroomManager
         Rails.logger.warn "Pin #{bathroom.gpio_pin} Changed from #{last_value} to #{value}"
         bathroom.occupied = value
         bathroom.save
-        update_sign
+        BathroomManager.update_sign
       end
     end
   end
