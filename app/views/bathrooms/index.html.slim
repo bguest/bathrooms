@@ -7,7 +7,7 @@ table.table
       th Occupied?
   tbody
     - @bathrooms.each do |br|
-      tr
+      tr class=(br.occupied ? 'danger' : 'success')
         td= br.position
         td= br.name
         td= br.occupied
