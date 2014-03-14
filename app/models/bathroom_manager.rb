@@ -14,8 +14,7 @@ end
 module BathroomManager
   extend self
 
-  attr_accessor :pixels
-  attr_accessor :bathrooms
+  attr_accessor :pixels, :bathrooms
 
   def new(bathrooms = nil)
     bms = bathrooms || Bathroom.order(position: :asc)
@@ -31,9 +30,11 @@ module BathroomManager
   end
 
   def watch(bathroom)
-    PiPiper.watch :pin => bathroom.gpio_pin do
+    @threads ||= {}
+    Thread.kill(@threads[bathroom.id]) if @threads[bathroom.id]
+    @threads[bathroom.id] = PiPiper.watch :pin => bathroom.gpio_pin do
       ActiveRecord::Base.connection_pool.with_connection do
-        Rails.logger.warn "Pin #{bathroom.gpio_pin} Changed from #{last_value} to #{value}"
+        Rails.logger.info "Pin #{bathroom.gpio_pin} Changed from #{last_value} to #{value}"
         bathroom.occupied = value
         bathroom.save
         BathroomManager.update_sign
