@@ -2,14 +2,16 @@
 #
 # Table name: bathrooms
 #
-#  id         :integer          not null, primary key
-#  position   :integer
-#  gpio_pin   :integer
-#  occupied   :boolean
-#  leds_count :integer
-#  name       :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id             :integer          not null, primary key
+#  position       :integer
+#  gpio_pin       :integer
+#  occupied       :boolean
+#  leds_count     :integer
+#  name           :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  occupied_color :string(255)
+#  open_color     :string(255)
 #
 # Indexes
 #
@@ -20,8 +22,19 @@ class Bathroom < ActiveRecord::Base
 
   attr_accessor :needs_update
 
+  serialize :occupied_color, ColorSerializer
+  serialize :open_color, ColorSerializer
+
+  def occupied_color
+    super || Color::RGB::Red
+  end
+
+  def open_color
+    super || Color::RGB::Green
+  end
+
   def pixels
-    color = occupied ? Color::RGB::Red : Color::RGB::Green
+    color = occupied ? occupied_color : open_color
     [color]*leds_count
   end
 

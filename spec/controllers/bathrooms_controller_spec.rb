@@ -32,12 +32,19 @@ describe BathroomsController do
   describe 'update PATCH  /bathrooms/:id(.:format)' do
     before :each do
       @bathroom = Bathroom.new(name:"Guys", position:1, gpio_pin:17, occupied:true, leds_count:1)
-      @params = {id: 99, bathroom: {gpio_pin:22, position:3, occupied:false, leds_count:2}}
+      @params = {id: 99, bathroom: {gpio_pin:22,
+                                    position:3,
+                                    occupied:false,
+                                    occupied_color:'#0000ff',
+                                    open_color:'#ff0000',
+                                    leds_count:2}
+                }
       Bathroom.expects(:find).with('99').returns(@bathroom)
     end
 
     it 'should redirect to admin page' do
       @bathroom.expects(:update_attributes).returns(true)
+      BathroomManager.expects(:update_sign).returns(true)
       patch :update, @params
       response.should redirect_to admin_bathrooms_path
     end
@@ -46,7 +53,10 @@ describe BathroomsController do
       @bathroom.expects(:update_attributes).with({'gpio_pin' => '22',
                                                   'occupied' => false,
                                                   'position' => '3',
+                                                  'occupied_color' => Color::RGB::Blue,
+                                                  'open_color' => Color::RGB::Red,
                                                   'leds_count' => '2'}).returns(true)
+      BathroomManager.expects(:update_sign).returns(true)
       patch :update, @params
     end
 

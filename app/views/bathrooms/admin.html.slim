@@ -7,6 +7,8 @@ table.table
     th GPIO PIN
     th Occupied
     th LEDs Count
+    th Open Color
+    th Occupied Color
   tbody
     - @bathrooms.each do |br|
       =form_for br do |f|
@@ -17,6 +19,8 @@ table.table
           td= f.text_field :gpio_pin, class:'form-control'
           td= f.check_box :occupied
           td= f.text_field :leds_count, class:'form-control'
+          td= color_field_tag 'bathroom[open_color]', nil, :value => bathroom_open_color(br)
+          td= color_field_tag 'bathroom[occupied_color]', nil, :value => bathroom_occupied_color(br)
           td= f.submit "Update", class:'btn btn-primary'
           td= link_to 'Watch', watch_bathroom_path(br), method: :put, class:'btn btn-danger'
 

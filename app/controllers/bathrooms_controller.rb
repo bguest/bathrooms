@@ -10,7 +10,12 @@ class BathroomsController < ApplicationController
   #PATCH /bathrooms/:id(.:format)
   def update
     bathroom = Bathroom.find(params[:id])
-    if bathroom.update_attributes(bathroom_params)
+
+    br_params = bathroom_params
+    br_params[:open_color] = Color::RGB.from_html(bathroom_params[:open_color])
+    br_params[:occupied_color] = Color::RGB.from_html(bathroom_params[:occupied_color])
+
+    if bathroom.update_attributes(br_params)
       BathroomManager.update_sign if bathroom.needs_update
       flash[:success] = "#{bathroom.name} bathroom updated, needs update = #{bathroom.needs_update}"
       redirect_to admin_bathrooms_path
@@ -31,6 +36,12 @@ class BathroomsController < ApplicationController
   private
 
   def bathroom_params
-    params.require(:bathroom).permit(:name, :position, :gpio_pin, :occupied, :leds_count)
+    params.require(:bathroom).permit(:name,
+                                     :position,
+                                     :gpio_pin,
+                                     :occupied,
+                                     :occupied_color,
+                                     :open_color,
+                                     :leds_count)
   end
 end

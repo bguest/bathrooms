@@ -2,14 +2,16 @@
 #
 # Table name: bathrooms
 #
-#  id         :integer          not null, primary key
-#  position   :integer
-#  gpio_pin   :integer
-#  occupied   :boolean
-#  leds_count :integer
-#  name       :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id             :integer          not null, primary key
+#  position       :integer
+#  gpio_pin       :integer
+#  occupied       :boolean
+#  leds_count     :integer
+#  name           :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  occupied_color :string(255)
+#  open_color     :string(255)
 #
 # Indexes
 #
@@ -19,6 +21,23 @@
 require 'spec_helper'
 
 describe Bathroom do
+  describe 'relations and properties' do
+    it{ should serialize(:occupied_color).as ColorSerializer }
+    it{ should serialize(:open_color).as ColorSerializer }
+  end
+
+  describe '#occupied_color' do
+    it 'should default to Color::RGB::Green' do
+      Bathroom.new.occupied_color.should == Color::RGB::Red
+    end
+  end
+
+  describe '#open_color' do
+    it 'should default to Color::RGB::Green' do
+      Bathroom.new.open_color.should == Color::RGB::Green
+    end
+  end
+
   describe '#pixels' do
     it 'should return red pixels if bathroom is occupied' do
       br = Bathroom.new(leds_count:2, occupied:true)
