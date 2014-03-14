@@ -1,5 +1,14 @@
 Blinky::Application.routes.draw do
 
+  resources :bathrooms, only:[:index, :update] do
+    collection do
+      get 'admin'
+    end
+    member do
+      put 'watch'
+    end
+  end
+
   resources :sign, :only => [:index, :update] do
     collection do
       put 'phrase'
@@ -18,18 +27,7 @@ Blinky::Application.routes.draw do
 
   resources :segments, :only => :update
 
-  resources :blinker, :only => [:index] do
-    collection do
-      put 'start'
-      put 'stop'
-      put 'red'
-      put 'green'
-      put 'blue'
-      put 'color'
-    end
-  end
-
- root 'blinker#index'
+  root 'bathrooms#index'
 end
 
 # The priority is based upon order of creation: first created -> highest priority.

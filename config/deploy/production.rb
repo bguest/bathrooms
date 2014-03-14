@@ -20,7 +20,7 @@ set :stage, :production
 # something that quacks like a has can be used to set
 # extended properties on the server.
 set :admin_runner, "root"
-server 'raspberrypi.local',
+server 'bathrooms.local',
        user: 'root',
        roles: %w{web app},
        use_sudo: true

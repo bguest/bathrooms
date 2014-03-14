@@ -1,0 +1,14 @@
+h1 Letters
+table.table
+  thead
+    tr
+      th #
+      th Name
+      th Occupied?
+  tbody
+    - @bathrooms.each do |br|
+      tr
+        td= br.position
+        td= br.name
+        td= br.occupied
+

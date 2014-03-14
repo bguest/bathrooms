@@ -1,5 +1,5 @@
 set :application, 'blinky'
-set :repo_url, 'git@github.com:bguest/blinky.git'
+set :repo_url, 'git@github.com:bguest/bathrooms.git'
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
@@ -31,9 +31,12 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
-      execute 'sudo /etc/init.d/thin restart'
-      execute 'sudo /etc/init.d/nginx reload'
-      execute 'sudo /etc/init.d/nginx restart'
+      execute '/etc/init.d/thin restart'
+      execute '/etc/init.d/nginx reload'
+      execute '/etc/init.d/nginx restart'
+      #execute 'service thin restart'
+      #execute 'service nginx reload'
+      #execute 'service nginx restart'
     end
   end
   after :finished, 'deploy:restart'

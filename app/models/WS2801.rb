@@ -1,16 +1,3 @@
-class Color::RGB
-  def to_a
-    [red.to_i, green.to_i, blue.to_i]
-  end
-end
-
-class Color::HSL
-  def to_a
-    rgb = self.to_rgb
-    [rgb.red.to_i, rgb.green.to_i, rgb.blue.to_i]
-  end
-end
-
 # String of WS2801
 class WS2801
 

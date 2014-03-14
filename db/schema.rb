@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 7) do
+ActiveRecord::Schema.define(version: 8) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bathrooms", force: true do |t|
+    t.integer  "position"
+    t.integer  "gpio_pin"
+    t.boolean  "occupied"
+    t.integer  "leds_count"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bathrooms", ["position"], name: "index_bathrooms_on_position", using: :btree
 
   create_table "letters", force: true do |t|
     t.integer  "number"

@@ -1,0 +1,22 @@
+h1 Bathroom Setup
+table.table
+  thead
+    th ID
+    th Position
+    th Name
+    th GPIO PIN
+    th Occupied
+    th LEDs Count
+  tbody
+    - @bathrooms.each do |br|
+      =form_for br do |f|
+        tr
+          td= br.id
+          td= f.text_field :position, class:'form-control'
+          td= f.text_field :name, class:'form-control'
+          td= f.text_field :gpio_pin, class:'form-control'
+          td= f.check_box :occupied
+          td= f.text_field :leds_count, class:'form-control'
+          td= f.submit "Update", class:'btn btn-primary'
+          td= link_to 'Watch', watch_bathroom_path(br), method: :put, class:'btn btn-danger'
+
