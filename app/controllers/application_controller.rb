@@ -5,7 +5,4 @@ class ApplicationController < ActionController::Base
 
 private
 
-  def sign
-    @sign ||= (Sign.first || Sign.create)
-  end
 end

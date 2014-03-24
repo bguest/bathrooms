@@ -1,12 +1,10 @@
-[![Code Climate](https://codeclimate.com/github/bguest/blinky.png)](https://codeclimate.com/github/bguest/blinky) [![Build Status](https://travis-ci.org/bguest/blinky.png?branch=master)](https://travis-ci.org/bguest/blinky) [![Coverage Status](https://coveralls.io/repos/bguest/blinky/badge.png)](https://coveralls.io/r/bguest/blinky) [![Dependency Status](https://gemnasium.com/bguest/blinky.png)](https://gemnasium.com/bguest/blinky)
+[![Code Climate](https://codeclimate.com/github/bguest/bathrooms.png)](https://codeclimate.com/github/bguest/bathrooms) [![Build Status](https://travis-ci.org/bguest/bathrooms.png?branch=master)](https://travis-ci.org/bguest/bathrooms)[![Coverage Status](https://coveralls.io/repos/bguest/bathrooms/badge.png?branch=master)](https://coveralls.io/r/bguest/bathrooms?branch=master)[![Dependency Status](https://gemnasium.com/bguest/bathrooms.png)](https://gemnasium.com/bguest/bathrooms)
 
 #About
 
-This is the server side application used to control the 2014 Burning Man project "Segment 16". The server side application is a Rails 4 application that runs on nginx and thin. The application runs on a Raspberry Pi. The Raspberry Pi sends SPI signals to a string of WS2801 addressable multi colored LEDs. CAD Designs will be opensource as well as soon as the become available.
-
-Pictures of the project: https://www.facebook.com/media/set/?set=a.10101747777027690.1073741833.6906203&type=1&l=32b286d4ba
-
-The goal is to build between 10 and 20 of these huge 16 segment displays. When they are hooked together, anyone with a phone or computer can log into the supplied wireless network go to a website and submit phrases to be displayed on the sign. There will also be an iphone app that you can download to control the sign.
+Bathroom monitoring Raspberry pi, runs rails app to let employees who
+can't see the bathrooms know weather or not the bathroom is being used. Pictures and blog post to
+come.
 
 #Contact
 benguest@gmail.com
