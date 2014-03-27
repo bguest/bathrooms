@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/github/bguest/bathrooms.png)](https://codeclimate.com/github/bguest/bathrooms) [![Build Status](https://travis-ci.org/bguest/bathrooms.png?branch=master)](https://travis-ci.org/bguest/bathrooms)[![Coverage Status](https://coveralls.io/repos/bguest/bathrooms/badge.png?branch=master)](https://coveralls.io/r/bguest/bathrooms?branch=master)[![Dependency Status](https://gemnasium.com/bguest/bathrooms.png)](https://gemnasium.com/bguest/bathrooms)
+[![Code Climate](https://codeclimate.com/github/bguest/bathrooms.png)](https://codeclimate.com/github/bguest/bathrooms) [![Build Status](https://travis-ci.org/bguest/bathrooms.png?branch=master)](https://travis-ci.org/bguest/bathrooms) [![Coverage Status](https://coveralls.io/repos/bguest/bathrooms/badge.png?branch=master)](https://coveralls.io/r/bguest/bathrooms?branch=master) [![Dependency Status](https://gemnasium.com/bguest/bathrooms.png)](https://gemnasium.com/bguest/bathrooms)
 
 #About
 
